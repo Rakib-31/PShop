@@ -36,15 +36,18 @@ namespace PShop.Models
     partial void InsertMobileTbl(MobileTbl instance);
     partial void UpdateMobileTbl(MobileTbl instance);
     partial void DeleteMobileTbl(MobileTbl instance);
+    partial void InsertCartsTbl(CartsTbl instance);
+    partial void UpdateCartsTbl(CartsTbl instance);
+    partial void DeleteCartsTbl(CartsTbl instance);
+    partial void InsertOrdersTbl(OrdersTbl instance);
+    partial void UpdateOrdersTbl(OrdersTbl instance);
+    partial void DeleteOrdersTbl(OrdersTbl instance);
     partial void InsertMobileDetailTbl(MobileDetailTbl instance);
     partial void UpdateMobileDetailTbl(MobileDetailTbl instance);
     partial void DeleteMobileDetailTbl(MobileDetailTbl instance);
-    partial void InsertOrderTbl(OrderTbl instance);
-    partial void UpdateOrderTbl(OrderTbl instance);
-    partial void DeleteOrderTbl(OrderTbl instance);
-    partial void InsertCartTbl(CartTbl instance);
-    partial void UpdateCartTbl(CartTbl instance);
-    partial void DeleteCartTbl(CartTbl instance);
+    partial void InsertOrderProductTbl(OrderProductTbl instance);
+    partial void UpdateOrderProductTbl(OrderProductTbl instance);
+    partial void DeleteOrderProductTbl(OrderProductTbl instance);
     #endregion
 		
 		public PSHOPEntityDataContext() : 
@@ -93,6 +96,22 @@ namespace PShop.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<CartsTbl> CartsTbls
+		{
+			get
+			{
+				return this.GetTable<CartsTbl>();
+			}
+		}
+		
+		public System.Data.Linq.Table<OrdersTbl> OrdersTbls
+		{
+			get
+			{
+				return this.GetTable<OrdersTbl>();
+			}
+		}
+		
 		public System.Data.Linq.Table<MobileDetailTbl> MobileDetailTbls
 		{
 			get
@@ -101,19 +120,11 @@ namespace PShop.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<OrderTbl> OrderTbls
+		public System.Data.Linq.Table<OrderProductTbl> OrderProductTbls
 		{
 			get
 			{
-				return this.GetTable<OrderTbl>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CartTbl> CartTbls
-		{
-			get
-			{
-				return this.GetTable<CartTbl>();
+				return this.GetTable<OrderProductTbl>();
 			}
 		}
 	}
@@ -506,6 +517,466 @@ namespace PShop.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CartsTbl")]
+	public partial class CartsTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Category;
+		
+		private int _Quantity;
+		
+		private string _Color;
+		
+		private string _UserId;
+		
+		private int _ProductId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCategoryChanging(string value);
+    partial void OnCategoryChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnColorChanging(string value);
+    partial void OnColorChanged();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    #endregion
+		
+		public CartsTbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Color
+		{
+			get
+			{
+				return this._Color;
+			}
+			set
+			{
+				if ((this._Color != value))
+				{
+					this.OnColorChanging(value);
+					this.SendPropertyChanging();
+					this._Color = value;
+					this.SendPropertyChanged("Color");
+					this.OnColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int NOT NULL")]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrdersTbl")]
+	public partial class OrdersTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private System.Nullable<System.Guid> _OrderId;
+		
+		private System.Nullable<bool> _PaymentStatus;
+		
+		private string _UserId;
+		
+		private System.Nullable<System.DateTime> _OrderDate;
+		
+		private System.Nullable<System.DateTime> _PaymentDate;
+		
+		private System.Nullable<System.DateTime> _DeliveryDate;
+		
+		private System.Nullable<System.DateTime> _ShippedDate;
+		
+		private bool _OrderStatus;
+		
+		private double _TotalPayment;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnOrderIdChanging(System.Nullable<System.Guid> value);
+    partial void OnOrderIdChanged();
+    partial void OnPaymentStatusChanging(System.Nullable<bool> value);
+    partial void OnPaymentStatusChanged();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanged();
+    partial void OnPaymentDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnPaymentDateChanged();
+    partial void OnDeliveryDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDeliveryDateChanged();
+    partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnShippedDateChanged();
+    partial void OnOrderStatusChanging(bool value);
+    partial void OnOrderStatusChanged();
+    partial void OnTotalPaymentChanging(double value);
+    partial void OnTotalPaymentChanged();
+    #endregion
+		
+		public OrdersTbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> OrderId
+		{
+			get
+			{
+				return this._OrderId;
+			}
+			set
+			{
+				if ((this._OrderId != value))
+				{
+					this.OnOrderIdChanging(value);
+					this.SendPropertyChanging();
+					this._OrderId = value;
+					this.SendPropertyChanged("OrderId");
+					this.OnOrderIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentStatus", DbType="Bit")]
+		public System.Nullable<bool> PaymentStatus
+		{
+			get
+			{
+				return this._PaymentStatus;
+			}
+			set
+			{
+				if ((this._PaymentStatus != value))
+				{
+					this.OnPaymentStatusChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentStatus = value;
+					this.SendPropertyChanged("PaymentStatus");
+					this.OnPaymentStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(50)")]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> OrderDate
+		{
+			get
+			{
+				return this._OrderDate;
+			}
+			set
+			{
+				if ((this._OrderDate != value))
+				{
+					this.OnOrderDateChanging(value);
+					this.SendPropertyChanging();
+					this._OrderDate = value;
+					this.SendPropertyChanged("OrderDate");
+					this.OnOrderDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDate", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> PaymentDate
+		{
+			get
+			{
+				return this._PaymentDate;
+			}
+			set
+			{
+				if ((this._PaymentDate != value))
+				{
+					this.OnPaymentDateChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentDate = value;
+					this.SendPropertyChanged("PaymentDate");
+					this.OnPaymentDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryDate", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> DeliveryDate
+		{
+			get
+			{
+				return this._DeliveryDate;
+			}
+			set
+			{
+				if ((this._DeliveryDate != value))
+				{
+					this.OnDeliveryDateChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryDate = value;
+					this.SendPropertyChanged("DeliveryDate");
+					this.OnDeliveryDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippedDate", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> ShippedDate
+		{
+			get
+			{
+				return this._ShippedDate;
+			}
+			set
+			{
+				if ((this._ShippedDate != value))
+				{
+					this.OnShippedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ShippedDate = value;
+					this.SendPropertyChanged("ShippedDate");
+					this.OnShippedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderStatus", DbType="Bit NOT NULL")]
+		public bool OrderStatus
+		{
+			get
+			{
+				return this._OrderStatus;
+			}
+			set
+			{
+				if ((this._OrderStatus != value))
+				{
+					this.OnOrderStatusChanging(value);
+					this.SendPropertyChanging();
+					this._OrderStatus = value;
+					this.SendPropertyChanged("OrderStatus");
+					this.OnOrderStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPayment", DbType="Float NOT NULL")]
+		public double TotalPayment
+		{
+			get
+			{
+				return this._TotalPayment;
+			}
+			set
+			{
+				if ((this._TotalPayment != value))
+				{
+					this.OnTotalPaymentChanging(value);
+					this.SendPropertyChanging();
+					this._TotalPayment = value;
+					this.SendPropertyChanged("TotalPayment");
+					this.OnTotalPaymentChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MobileDetailTbl")]
 	public partial class MobileDetailTbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -517,8 +988,6 @@ namespace PShop.Models
 		private string _MobileName;
 		
 		private string _BrandName;
-		
-		private int _MobileInfoId;
 		
 		private double _Price;
 		
@@ -600,8 +1069,6 @@ namespace PShop.Models
     partial void OnMobileNameChanged();
     partial void OnBrandNameChanging(string value);
     partial void OnBrandNameChanged();
-    partial void OnMobileInfoIdChanging(int value);
-    partial void OnMobileInfoIdChanged();
     partial void OnPriceChanging(double value);
     partial void OnPriceChanged();
     partial void OnDiscountChanging(double value);
@@ -735,26 +1202,6 @@ namespace PShop.Models
 					this._BrandName = value;
 					this.SendPropertyChanged("BrandName");
 					this.OnBrandNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileInfoId", DbType="Int NOT NULL")]
-		public int MobileInfoId
-		{
-			get
-			{
-				return this._MobileInfoId;
-			}
-			set
-			{
-				if ((this._MobileInfoId != value))
-				{
-					this.OnMobileInfoIdChanging(value);
-					this.SendPropertyChanging();
-					this._MobileInfoId = value;
-					this.SendPropertyChanged("MobileInfoId");
-					this.OnMobileInfoIdChanged();
 				}
 			}
 		}
@@ -1480,61 +1927,53 @@ namespace PShop.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrderTbl")]
-	public partial class OrderTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrderProductTbl")]
+	public partial class OrderProductTbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Guid _Id;
+		private int _Id;
 		
-		private string _ProductName;
+		private System.Guid _OrderId;
 		
-		private string _BrandName;
+		private int _ProductId;
 		
 		private string _Category;
 		
 		private int _Quantity;
 		
-		private double _Payment;
-		
-		private bool _PaymentStatus;
-		
 		private string _Color;
 		
-		private string _UserId;
+		private double _ProductPrice;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnBrandNameChanging(string value);
-    partial void OnBrandNameChanged();
+    partial void OnOrderIdChanging(System.Guid value);
+    partial void OnOrderIdChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
     partial void OnCategoryChanging(string value);
     partial void OnCategoryChanged();
     partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
-    partial void OnPaymentChanging(double value);
-    partial void OnPaymentChanged();
-    partial void OnPaymentStatusChanging(bool value);
-    partial void OnPaymentStatusChanged();
     partial void OnColorChanging(string value);
     partial void OnColorChanged();
-    partial void OnUserIdChanging(string value);
-    partial void OnUserIdChanged();
+    partial void OnProductPriceChanging(double value);
+    partial void OnProductPriceChanged();
     #endregion
 		
-		public OrderTbl()
+		public OrderProductTbl()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
 		{
 			get
 			{
@@ -1553,42 +1992,42 @@ namespace PShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ProductName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid OrderId
 		{
 			get
 			{
-				return this._ProductName;
+				return this._OrderId;
 			}
 			set
 			{
-				if ((this._ProductName != value))
+				if ((this._OrderId != value))
 				{
-					this.OnProductNameChanging(value);
+					this.OnOrderIdChanging(value);
 					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
+					this._OrderId = value;
+					this.SendPropertyChanged("OrderId");
+					this.OnOrderIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrandName", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string BrandName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int NOT NULL")]
+		public int ProductId
 		{
 			get
 			{
-				return this._BrandName;
+				return this._ProductId;
 			}
 			set
 			{
-				if ((this._BrandName != value))
+				if ((this._ProductId != value))
 				{
-					this.OnBrandNameChanging(value);
+					this.OnProductIdChanging(value);
 					this.SendPropertyChanging();
-					this._BrandName = value;
-					this.SendPropertyChanged("BrandName");
-					this.OnBrandNameChanged();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
 				}
 			}
 		}
@@ -1633,47 +2072,7 @@ namespace PShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float NOT NULL")]
-		public double Payment
-		{
-			get
-			{
-				return this._Payment;
-			}
-			set
-			{
-				if ((this._Payment != value))
-				{
-					this.OnPaymentChanging(value);
-					this.SendPropertyChanging();
-					this._Payment = value;
-					this.SendPropertyChanged("Payment");
-					this.OnPaymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentStatus", DbType="Bit NOT NULL")]
-		public bool PaymentStatus
-		{
-			get
-			{
-				return this._PaymentStatus;
-			}
-			set
-			{
-				if ((this._PaymentStatus != value))
-				{
-					this.OnPaymentStatusChanging(value);
-					this.SendPropertyChanging();
-					this._PaymentStatus = value;
-					this.SendPropertyChanged("PaymentStatus");
-					this.OnPaymentStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
 		public string Color
 		{
 			get
@@ -1693,228 +2092,22 @@ namespace PShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductPrice", DbType="Float NOT NULL")]
+		public double ProductPrice
 		{
 			get
 			{
-				return this._UserId;
+				return this._ProductPrice;
 			}
 			set
 			{
-				if ((this._UserId != value))
+				if ((this._ProductPrice != value))
 				{
-					this.OnUserIdChanging(value);
+					this.OnProductPriceChanging(value);
 					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CartTbl")]
-	public partial class CartTbl : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _ProductName;
-		
-		private string _BrandName;
-		
-		private string _Category;
-		
-		private int _Quantity;
-		
-		private string _Color;
-		
-		private string _UserId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnBrandNameChanging(string value);
-    partial void OnBrandNameChanged();
-    partial void OnCategoryChanging(string value);
-    partial void OnCategoryChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnColorChanging(string value);
-    partial void OnColorChanged();
-    partial void OnUserIdChanging(string value);
-    partial void OnUserIdChanged();
-    #endregion
-		
-		public CartTbl()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this.OnProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrandName", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string BrandName
-		{
-			get
-			{
-				return this._BrandName;
-			}
-			set
-			{
-				if ((this._BrandName != value))
-				{
-					this.OnBrandNameChanging(value);
-					this.SendPropertyChanging();
-					this._BrandName = value;
-					this.SendPropertyChanged("BrandName");
-					this.OnBrandNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string Category
-		{
-			get
-			{
-				return this._Category;
-			}
-			set
-			{
-				if ((this._Category != value))
-				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(20)")]
-		public string Color
-		{
-			get
-			{
-				return this._Color;
-			}
-			set
-			{
-				if ((this._Color != value))
-				{
-					this.OnColorChanging(value);
-					this.SendPropertyChanging();
-					this._Color = value;
-					this.SendPropertyChanged("Color");
-					this.OnColorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
+					this._ProductPrice = value;
+					this.SendPropertyChanged("ProductPrice");
+					this.OnProductPriceChanged();
 				}
 			}
 		}

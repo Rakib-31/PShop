@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9" name="PSHOPEntity">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="PSHOPEntity">
   <DataContextMoniker Name="/PSHOPEntityDataContext" />
   <nestedChildShapes>
     <classShape Id="490557b7-5eba-40bd-9589-148cdb7d3d70" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
@@ -14,22 +14,28 @@
         <elementListCompartment Id="0f0e8ea5-d6bc-49e7-bee2-1f34e8f2df59" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="09a76293-4863-40bc-a17a-14319874a2ae" absoluteBounds="2.625, 0.5, 2, 8.3091455078125">
+    <classShape Id="0fffdb67-f2c6-4898-a2e4-a7e15df52a22" absoluteBounds="5.5, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PSHOPEntityDataContext/CartsTbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66cc8cbc-d687-4c99-b6c5-0bc33abe01cd" absoluteBounds="5.515, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5a76dd3-a6fd-48f9-8773-1bfd00b3700c" absoluteBounds="5.5, 2.625, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PSHOPEntityDataContext/OrdersTbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c0751ca-7980-4f87-89ac-39badfdcfa69" absoluteBounds="5.515, 3.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b0e5fa4-5d76-430f-ae3f-6966ed58d905" absoluteBounds="3, 0.5, 2, 8.1168440755208326">
       <DataClassMoniker Name="/PSHOPEntityDataContext/MobileDetailTbl" />
       <nestedChildShapes>
-        <elementListCompartment Id="a4893708-22e5-4642-86d6-9a03b8641a7d" absoluteBounds="2.6399999999999997, 0.96, 1.9700000000000002, 7.7491455078125009" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e5105441-3211-4830-a396-9fe1a6f46aa5" absoluteBounds="3.015, 0.96, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7d6e16cc-da36-4640-b9d6-d8a3cd8f0bfe" absoluteBounds="5, 0.625, 2, 2.5401025390625">
-      <DataClassMoniker Name="/PSHOPEntityDataContext/OrderTbl" />
+    <classShape Id="dbdb427b-3ec8-46b4-ace7-84324bd23f22" absoluteBounds="5.5, 5.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PSHOPEntityDataContext/OrderProductTbl" />
       <nestedChildShapes>
-        <elementListCompartment Id="06034f90-7399-4c69-8801-c9437918116d" absoluteBounds="5.015, 1.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0b9759e3-23ef-47e8-b553-4b07fb709450" absoluteBounds="5.125, 3.625, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/PSHOPEntityDataContext/CartTbl" />
-      <nestedChildShapes>
-        <elementListCompartment Id="20cef8a9-4df4-410d-a77e-5e975a2e959f" absoluteBounds="5.14, 4.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d9044b96-c226-44ed-81ed-67e350eec697" absoluteBounds="5.515, 5.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
